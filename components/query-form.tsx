@@ -27,115 +27,116 @@ export function QueryForm() {
   return (
     <section
       id="contact"
-      className="relative py-28 lg:py-36 px-6 lg:px-8 bg-gradient-to-b from-white via-neutral-50 to-white"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-neutral-50 to-white py-24 sm:py-28 lg:py-36"
     >
-      <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+      <div className="mx-auto max-w-7xl px-5 sm:px-8">
+        <div className="grid items-center gap-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-24">
           {/* LEFT CONTENT */}
           <motion.div
-            initial={{ opacity: 0, y: 24 }}
+            initial={{ opacity: 0, y: 28 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut" }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="max-w-xl"
           >
-            <p className="text-xs font-semibold text-[#1a5f7a] uppercase tracking-[0.28em] mb-5">
+            <span className="mb-6 inline-block rounded-full bg-[#1a5f7a]/10 px-4 py-1 text-xs font-semibold uppercase tracking-widest text-[#1a5f7a]">
               Custom Trip Planning
-            </p>
+            </span>
 
-            <h2 className="text-4xl sm:text-5xl font-bold text-neutral-900 tracking-tight leading-[1.1] mb-7">
-              Crafted journeys,
+            <h2 className="text-4xl font-bold leading-tight tracking-tight text-neutral-900 sm:text-5xl">
+              Journeys crafted
               <br />
-              designed for you
+              around your lifestyle
             </h2>
 
-            <p className="text-lg text-neutral-500 leading-relaxed mb-12">
-              Share your preferences and our travel specialists will design a
-              refined, end-to-end itinerary tailored exclusively to your style,
-              pace, and interests.
+            <p className="mt-6 max-w-lg text-lg leading-relaxed text-neutral-500">
+              Tell us what you envision — our experts will design a seamless,
+              personalized itinerary that reflects your pace, comfort, and
+              interests.
             </p>
 
-            <div className="space-y-6">
+            <div className="mt-12 grid gap-5">
               {[
-                "Tailor-made itineraries, never templates",
-                "Local experts and private experiences",
-                "Flexible planning with concierge support",
-                "Transparent pricing with best-value assurance",
-              ].map((feature, index) => (
+                "Tailor-made itineraries",
+                "Local specialists & curated stays",
+                "Private transfers & guided experiences",
+                "Transparent pricing & premium support",
+              ].map((item, i) => (
                 <motion.div
-                  key={feature}
-                  initial={{ opacity: 0, x: -12 }}
+                  key={item}
+                  initial={{ opacity: 0, x: -14 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.08 }}
+                  transition={{ duration: 0.4, delay: i * 0.08 }}
                   className="flex items-start gap-4"
                 >
-                  <div className="mt-1 w-6 h-6 rounded-full bg-[#1a5f7a] flex items-center justify-center shrink-0">
-                    <CheckCircle className="w-3.5 h-3.5 text-white" />
+                  <div className="mt-1 flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#1a5f7a]">
+                    <CheckCircle className="h-4 w-4 text-white" />
                   </div>
-                  <span className="text-neutral-600 leading-relaxed">
-                    {feature}
+                  <span className="leading-relaxed text-neutral-600">
+                    {item}
                   </span>
                 </motion.div>
               ))}
             </div>
           </motion.div>
 
-          {/* FORM CARD */}
+          {/* FORM */}
           <motion.div
-            initial={{ opacity: 0, y: 32 }}
+            initial={{ opacity: 0, y: 36 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.15 }}
+            transition={{ duration: 0.6, delay: 0.12 }}
           >
-            <div className="relative rounded-3xl bg-white/90 backdrop-blur-xl shadow-[0_40px_120px_-40px_rgba(0,0,0,0.15)] border border-neutral-200/60 p-8 lg:p-10">
+            <div className="relative rounded-3xl border border-neutral-200/60 bg-white/85 p-8 shadow-[0_30px_90px_-30px_rgba(0,0,0,0.18)] backdrop-blur-xl sm:p-10">
               {submitted ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.96 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="text-center py-20"
+                  transition={{ duration: 0.35 }}
+                  className="py-24 text-center"
                 >
-                  <div className="w-20 h-20 rounded-2xl bg-[#1a5f7a] flex items-center justify-center mx-auto mb-6 shadow-lg shadow-[#1a5f7a]/30">
-                    <CheckCircle className="w-10 h-10 text-white" />
+                  <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-2xl bg-[#1a5f7a] shadow-xl shadow-[#1a5f7a]/40">
+                    <CheckCircle className="h-10 w-10 text-white" />
                   </div>
-                  <h3 className="text-2xl font-semibold text-neutral-900 mb-3">
-                    Request received
+
+                  <h3 className="text-2xl font-semibold text-neutral-900">
+                    Request submitted
                   </h3>
-                  <p className="text-neutral-500">
-                    Our team will reach out within 24 hours.
+                  <p className="mt-2 text-neutral-500">
+                    Our travel expert will reach out within 24 hours.
                   </p>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid sm:grid-cols-2 gap-5">
+                <form onSubmit={handleSubmit} className="grid gap-6 sm:gap-7">
+                  <div className="grid gap-5 sm:grid-cols-2">
                     <Field label="Full Name">
-                      <Input placeholder="John Smith" required />
+                      <Input placeholder="Ajay Singh" required />
                     </Field>
 
                     <Field label="Email Address">
                       <Input
                         type="email"
-                        placeholder="john@example.com"
+                        placeholder="ajay@example.com"
                         required
                       />
                     </Field>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 w-full gap-5">
+                  <div className="grid gap-5 sm:grid-cols-2">
                     <Field label="Phone Number">
-                      <Input type="tel" placeholder="+91 98765 XXXXX" />
+                      <Input type="tel" placeholder="+91 98XXXXXXX" />
                     </Field>
 
-                    <Field label="Service Interested In *">
+                    <Field label="Service Interested In">
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select Service" />
+                          <SelectValue placeholder="Select service" />
                         </SelectTrigger>
                         <SelectContent>
-                          {serviceName.map((d) => (
-                            <SelectItem key={d} value={d}>
-                              {d}
+                          {serviceName.map((s) => (
+                            <SelectItem key={s} value={s}>
+                              {s}
                             </SelectItem>
                           ))}
                         </SelectContent>
@@ -143,38 +144,18 @@ export function QueryForm() {
                     </Field>
                   </div>
 
-                  {/* <div className="grid sm:grid-cols-2 gap-5">
-                    <Field label="Travel Dates">
-                      <Input type="date" />
-                    </Field>
-
-                    <Field label="Travelers">
-                      <Select>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Number of travelers" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="1">1 Traveler</SelectItem>
-                          <SelectItem value="2">2 Travelers</SelectItem>
-                          <SelectItem value="3-4">3–4 Travelers</SelectItem>
-                          <SelectItem value="5+">5+ Travelers</SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </Field>
-                  </div> */}
-
                   <Field label="Message">
                     <Textarea
-                      placeholder="Tell us about your travel style, interests, and expectations…"
-                      className="min-h-32 resize-none"
+                      placeholder="Tell us your travel preferences, budget, destination, and duration..."
+                      className="min-h-[130px] resize-none"
                     />
                   </Field>
 
                   <Button
                     type="submit"
-                    className="w-full h-14 bg-[#1a5f7a] hover:bg-[#1a5f7a]/90 text-white rounded-xl shadow-lg shadow-[#1a5f7a]/25"
+                    className="mt-2 h-14 rounded-xl bg-[#1a5f7a] text-base font-medium text-white shadow-lg shadow-[#1a5f7a]/30 hover:bg-[#1a5f7a]/90"
                   >
-                    <Send className="w-4 h-4 mr-2" />
+                    <Send className="mr-2 h-4 w-4" />
                     Submit Request
                   </Button>
                 </form>
@@ -187,7 +168,7 @@ export function QueryForm() {
   );
 }
 
-/* ---------- Small Helper ---------- */
+/* ---------- Field Wrapper ---------- */
 function Field({
   label,
   children,
@@ -196,7 +177,7 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-2">
+    <div className="grid gap-2">
       <label className="text-sm font-medium text-neutral-700">{label}</label>
       {children}
     </div>
