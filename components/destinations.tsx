@@ -157,57 +157,57 @@ import { Card, CardContent } from "@/components/ui/card";
 const destinations = [
   {
     id: 1,
-    name: "Santorini, Greece",
+    name: "Leh–Ladakh, Jammu & Kashmir",
     image:
-      "https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?q=80&w=1935&auto=format&fit=crop",
-    price: 1299,
+      "https://images.unsplash.com/photo-1548013146-72479768bada?q=80&w=1935&auto=format&fit=crop",
+    price: 14999,
     rating: 4.9,
-    reviews: 2847,
+    reviews: 4821,
   },
   {
     id: 2,
-    name: "Bali, Indonesia",
+    name: "Goa",
     image:
-      "https://images.unsplash.com/photo-1537996194471-e657df975ab4?q=80&w=1938&auto=format&fit=crop",
-    price: 899,
+      "https://images.unsplash.com/photo-1587922546307-776227941871?q=80&w=1938&auto=format&fit=crop",
+    price: 9999,
     rating: 4.8,
-    reviews: 3921,
+    reviews: 7354,
   },
   {
     id: 3,
-    name: "Maldives",
+    name: "Manali, Himachal Pradesh",
     image:
-      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?q=80&w=1965&auto=format&fit=crop",
-    price: 2499,
+      "https://images.unsplash.com/photo-1712388430474-ace0c16051e2?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    price: 11999,
     rating: 4.9,
-    reviews: 1856,
+    reviews: 3920,
   },
   {
     id: 4,
-    name: "Tokyo, Japan",
+    name: "Jaipur, Rajasthan",
     image:
-      "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?q=80&w=1994&auto=format&fit=crop",
-    price: 1599,
+      "https://images.unsplash.com/photo-1599661046289-e31897846e41?q=80&w=1994&auto=format&fit=crop",
+    price: 8999,
     rating: 4.7,
-    reviews: 4102,
+    reviews: 5123,
   },
   {
     id: 5,
-    name: "Paris, France",
+    name: "Munnar, Kerala",
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073&auto=format&fit=crop",
-    price: 1199,
+      "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?q=80&w=2073&auto=format&fit=crop",
+    price: 10999,
     rating: 4.8,
-    reviews: 5234,
+    reviews: 4689,
   },
   {
     id: 6,
-    name: "Dubai, UAE",
+    name: "Varanasi, Uttar Pradesh",
     image:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?q=80&w=2070&auto=format&fit=crop",
-    price: 1799,
+      "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?q=80&w=2070&auto=format&fit=crop",
+    price: 7999,
     rating: 4.7,
-    reviews: 2918,
+    reviews: 6210,
   },
 ];
 

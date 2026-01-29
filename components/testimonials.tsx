@@ -10,136 +10,156 @@ import { Card, CardContent } from "@/components/ui/card";
 const testimonials = [
   {
     id: 1,
-    name: "Sarah Johnson",
-    location: "New York, USA",
+    name: "Aarav Mehta",
+    location: "Mumbai, Maharashtra",
     avatar:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1615109398623-88346a601842?q=80&w=1974&auto=format&fit=crop",
     rating: 5,
-    text: "Wanderlust made our honeymoon absolutely magical. From the seamless booking process to the incredible local guides, every detail was perfect. We'll definitely be booking our next adventure with them!",
+    text: "Our Leh–Ladakh trip was flawlessly organized. From hotels to local guides, everything was premium and smooth. One of the best travel experiences we've ever had.",
   },
   {
     id: 2,
-    name: "Michael Chen",
-    location: "Toronto, Canada",
+    name: "Priya Sharma",
+    location: "Jaipur, Rajasthan",
     avatar:
-      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1607746882042-944635dfe10e?q=80&w=1974&auto=format&fit=crop",
     rating: 5,
-    text: "The Bali Wellness Retreat exceeded all expectations. The attention to detail, the amazing spa experiences, and the beautiful accommodations made it the perfect escape from city life.",
+    text: "The Kerala backwaters tour was peaceful and luxurious. The planning, houseboat stay, and food were exceptional. Highly recommended for stress-free vacations.",
   },
   {
     id: 3,
-    name: "Emma Williams",
-    location: "London, UK",
+    name: "Rohan Verma",
+    location: "Delhi, NCR",
     avatar:
-      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2070&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=2070&auto=format&fit=crop",
     rating: 5,
-    text: "I've traveled with many agencies, but Wanderlust stands out. Their personalized approach and 24/7 support made me feel taken care of throughout my entire journey. Highly recommend!",
+    text: "Manali and Spiti valley road trip was surreal. Perfect itinerary, great stays, and amazing support throughout the journey. Would definitely book again.",
+  },
+  {
+    id: 4,
+    name: "Neha Kapoor",
+    location: "Bengaluru, Karnataka",
+    avatar:
+      "https://img.freepik.com/premium-photo/photo-young-indian-woman-her-mid-20s-college-student-holding-book-her-chest_878783-7283.jpg?w=2000",
+    rating: 5,
+    text: "Udaipur felt straight out of a royal dream. Stunning hotels, seamless transfers, and personalized service throughout the trip.",
+  },
+  {
+    id: 5,
+    name: "Kunal Shah",
+    location: "Ahmedabad, Gujarat",
+    avatar:
+      "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=2070&auto=format&fit=crop",
+    rating: 5,
+    text: "The Andaman island tour was breathtaking. Crystal-clear waters, premium resorts, and perfect planning. Totally worth it.",
+  },
+  {
+    id: 6,
+    name: "Ananya Iyer",
+    location: "Chennai, Tamil Nadu",
+    avatar:
+      "https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=2070&auto=format&fit=crop",
+    rating: 5,
+    text: "Coorg and Wayanad trip was refreshing. Beautiful stays, peaceful nature, and smooth logistics throughout.",
+  },
+  {
+    id: 7,
+    name: "Siddharth Malhotra",
+    location: "Chandigarh",
+    avatar:
+      "https://images.unsplash.com/photo-1603415526960-f7e0328c63b1?q=80&w=2070&auto=format&fit=crop",
+    rating: 5,
+    text: "Spiti valley expedition was the best adventure of my life. Perfect planning, skilled drivers, and stunning locations.",
+  },
+  {
+    id: 8,
+    name: "Pooja Kulkarni",
+    location: "Pune, Maharashtra",
+    avatar:
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?q=80&w=2070&auto=format&fit=crop",
+    rating: 5,
+    text: "Rann of Kutch festival tour was culturally rich and extremely well organized. Loved every detail.",
   },
 ];
 
 export function Testimonials() {
-  const [activeIndex, setActiveIndex] = React.useState(0);
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveIndex((current) => (current + 1) % testimonials.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section className="bg-secondary/50 py-20 lg:py-28">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section className="relative overflow-hidden bg-gradient-to-b from-background via-secondary/30 to-background py-16 sm:py-20 lg:py-28">
+      <div className="mx-auto  px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
           className="mb-12 text-center"
         >
-          <span className="mb-2 inline-block text-sm font-medium uppercase tracking-wider text-primary">
-            Testimonials
+          <span className="mb-2 inline-block rounded-full bg-primary/10 px-4 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+            Indian Travelers
           </span>
           <h2 className="text-balance font-serif text-3xl font-bold text-foreground sm:text-4xl lg:text-5xl">
-            What Our Travelers Say
+            Real Experiences Across India
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-pretty text-muted-foreground">
-            Don&apos;t just take our word for it. Hear from travelers who have
-            experienced the magic of Wanderlust firsthand.
+            Scroll horizontally to explore real travel stories from across
+            India.
           </p>
         </motion.div>
 
-        {/* Testimonials */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="relative"
+        {/* Horizontal Scroll */}
+        <div
+          className={cn(
+            "flex gap-6 overflow-x-auto scroll-smooth pb-6",
+            "[-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+          )}
         >
-          <div className="overflow-hidden">
-            <div
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+          {testimonials.map((testimonial) => (
+            <motion.div
+              key={testimonial.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="min-w-[85%] sm:min-w-[60%] lg:min-w-[420px]"
             >
-              {testimonials.map((testimonial) => (
-                <div key={testimonial.id} className="w-full shrink-0 px-4">
-                  <Card className="mx-auto max-w-3xl border-0 shadow-lg">
-                    <CardContent className="p-8 sm:p-10">
-                      <Quote className="mb-6 size-10 text-primary/20" />
-                      <p className="mb-8 text-lg leading-relaxed text-foreground sm:text-xl">
-                        &ldquo;{testimonial.text}&rdquo;
-                      </p>
-                      <div className="flex items-center gap-4">
-                        <img
-                          src={testimonial.avatar || "/placeholder.svg"}
-                          alt={testimonial.name}
-                          className="size-14 rounded-full object-cover"
-                        />
-                        <div>
-                          <p className="font-semibold text-foreground">
-                            {testimonial.name}
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            {testimonial.location}
-                          </p>
-                          <div className="mt-1 flex gap-0.5">
-                            {Array.from({ length: testimonial.rating }).map(
-                              (_, i) => (
-                                <Star
-                                  key={i}
-                                  className="size-4 fill-accent text-accent"
-                                />
-                              ),
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          </div>
+              <Card className="h-full border border-border/50 bg-background/70 backdrop-blur supports-[backdrop-filter]:bg-background/50 shadow-xl">
+                <CardContent className="flex h-full flex-col p-6 sm:p-8">
+                  <Quote className="mb-4 size-8 text-primary/30" />
 
-          {/* Dots */}
-          <div className="mt-8 flex justify-center gap-2">
-            {testimonials.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  "size-2.5 rounded-full transition-all duration-300",
-                  activeIndex === index
-                    ? "bg-primary w-8"
-                    : "bg-muted-foreground/30 hover:bg-muted-foreground/50",
-                )}
-                aria-label={`Go to testimonial ${index + 1}`}
-              />
-            ))}
-          </div>
-        </motion.div>
+                  <p className="mb-6 flex-1 text-base leading-relaxed text-foreground sm:text-lg">
+                    &ldquo;{testimonial.text}&rdquo;
+                  </p>
+
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="size-12 rounded-full object-cover"
+                    />
+                    <div>
+                      <p className="font-semibold text-foreground">
+                        {testimonial.name}
+                      </p>
+                      <p className="text-sm text-muted-foreground">
+                        {testimonial.location}
+                      </p>
+                      <div className="mt-1 flex gap-0.5">
+                        {Array.from({ length: testimonial.rating }).map(
+                          (_, i) => (
+                            <Star
+                              key={i}
+                              className="size-4 fill-primary text-primary"
+                            />
+                          ),
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

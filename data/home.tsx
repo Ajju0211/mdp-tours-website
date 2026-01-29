@@ -73,3 +73,5 @@ export const homeServicesData = [
       "Comprehensive travel insurance coverage for domestic and international trips.",
   },
 ];
+
+export const serviceName = homeServicesData.map((service) => service.title);

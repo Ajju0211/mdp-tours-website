@@ -13,6 +13,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Send, CheckCircle } from "lucide-react";
+import { serviceName } from "@/data/home";
 
 export function QueryForm() {
   const [submitted, setSubmitted] = useState(false);
@@ -121,26 +122,18 @@ export function QueryForm() {
                     </Field>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="grid sm:grid-cols-2 w-full gap-5">
                     <Field label="Phone Number">
-                      <Input type="tel" placeholder="+91 98765 43210" />
+                      <Input type="tel" placeholder="+91 98765 XXXXX" />
                     </Field>
 
-                    <Field label="Destination">
+                    <Field label="Service Interested In *">
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select destination" />
+                          <SelectValue placeholder="Select Service" />
                         </SelectTrigger>
                         <SelectContent>
-                          {[
-                            "Paris, France",
-                            "Dubai, UAE",
-                            "Bali, Indonesia",
-                            "Switzerland",
-                            "Maldives",
-                            "Singapore",
-                            "Other / Not Sure",
-                          ].map((d) => (
+                          {serviceName.map((d) => (
                             <SelectItem key={d} value={d}>
                               {d}
                             </SelectItem>
@@ -150,7 +143,7 @@ export function QueryForm() {
                     </Field>
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-5">
+                  {/* <div className="grid sm:grid-cols-2 gap-5">
                     <Field label="Travel Dates">
                       <Input type="date" />
                     </Field>
@@ -168,7 +161,7 @@ export function QueryForm() {
                         </SelectContent>
                       </Select>
                     </Field>
-                  </div>
+                  </div> */}
 
                   <Field label="Message">
                     <Textarea
