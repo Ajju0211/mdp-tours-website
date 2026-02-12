@@ -8,10 +8,10 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  { name: "Home", href: "#" },
+  // { name: "Home", href: "#" },
   { name: "Destinations", href: "#destinations" },
-  { name: "Packages", href: "#services" },
-  { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
+  // { name: "About", href: "#about" },
   { name: "Contact", href: "#contact" },
 ];
 
@@ -38,7 +38,7 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8">
+      <nav className="mx-auto max-w-7xl px-6 flg:px-8">
         <div className="flex h-20 lg:h-24 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
@@ -55,12 +55,12 @@ export function Navbar() {
               <span
                 className={`text-xl lg:text-2xl font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-neutral-900" : "text-white"}`}
               >
-                MDP Tours
+                MDP TOURS
               </span>
               <span
                 className={`text-[10px] lg:text-xs font-medium tracking-widest uppercase transition-colors duration-300 ${isScrolled ? "text-neutral-500" : "text-white/70"}`}
               >
-                Global Adventures
+                Simplifying Travel
               </span>
             </div>
           </Link>

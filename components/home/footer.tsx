@@ -17,8 +17,8 @@ const footerLinks = {
   quickLinks: [
     { name: "Home", href: "#" },
     { name: "Destinations", href: "#destinations" },
-    { name: "Packages", href: "#services" },
-    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    // { name: "About", href: "#about" },
     { name: "Contact", href: "#contact" },
   ],
   support: [

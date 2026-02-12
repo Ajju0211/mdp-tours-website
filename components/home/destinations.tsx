@@ -280,7 +280,7 @@ export function Destinations() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     {/* Price Badge */}
                     <div className="absolute right-4 top-4 rounded-full bg-card/90 px-3 py-1.5 text-sm font-semibold text-foreground backdrop-blur-sm">
-                      From ${destination.price}
+                      From &#8377;{destination.price}
                     </div>
                   </div>
 

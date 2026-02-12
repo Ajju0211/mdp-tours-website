@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { SearchWidget } from "@/components/search-widget";
+import { SearchWidget } from "@/components/home/search-widget";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
@@ -61,7 +61,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          <SearchWidget />
+          {/* <SearchWidget /> */}
         </motion.div>
 
         {/* Stats */}

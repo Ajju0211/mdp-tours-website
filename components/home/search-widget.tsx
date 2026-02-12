@@ -84,7 +84,7 @@ export function SearchWidget() {
                     variant="outline"
                     className="w-full justify-start text-left font-normal bg-transparent"
                   >
-                    ${budget[0]} - ${budget[1]}
+                    &#8377;{budget[0]} - &#8377;{budget[1]}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-64" align="start">
