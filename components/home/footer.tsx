@@ -150,7 +150,7 @@ export function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="h-4 w-4 text-[#57b8d7] mt-0.5 shrink-0" />
-                <span className="text-white/60 text-sm">+91 98765 43210</span>
+                <span className="text-white/60 text-sm">+91 87797 21547</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="h-4 w-4 text-[#57b8d7] mt-0.5 shrink-0" />
