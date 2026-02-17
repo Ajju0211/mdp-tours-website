@@ -15,11 +15,11 @@ import Link from "next/link";
 
 const footerLinks = {
   quickLinks: [
-    { name: "Home", href: "#" },
-    { name: "Destinations", href: "#destinations" },
-    { name: "Services", href: "#services" },
-    // { name: "About", href: "#about" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "Destinations", href: "/#destinations" },
+    { name: "Packages", href: "/packages" },
+    { name: "Services", href: "/#services" },
+    { name: "Contact", href: "/#contact" },
   ],
   support: [
     { name: "FAQ", href: "#" },
