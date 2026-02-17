@@ -1,23 +1,10 @@
-import {
-  Plane,
-  Bus,
-  Hotel,
-  Camera,
-  Mountain,
-  Utensils,
-  MapPin,
-  Sunrise,
-  Ship,
-  TreePine,
-} from "lucide-react";
-
 export interface ItineraryDay {
   day: number;
   title: string;
   location: string;
   description: string;
   activities: string[];
-  icon: typeof Plane;
+  iconName: string;
   image: string;
   meals: string[];
   accommodation: string;
@@ -86,7 +73,7 @@ export const sampleItineraries: Itinerary[] = [
           "Evening walk to Leh Market",
           "Visit Shanti Stupa at sunset",
         ],
-        icon: Plane,
+        iconName: "Plane",
         image:
           "https://images.unsplash.com/photo-1551785882-5ba31ba4f583?q=80&w=1740&auto=format&fit=crop",
         meals: ["Dinner"],
@@ -104,7 +91,7 @@ export const sampleItineraries: Itinerary[] = [
           "Tour Sankar Monastery",
           "Walk through Old Leh Town",
         ],
-        icon: Camera,
+        iconName: "Camera",
         image:
           "https://images.unsplash.com/photo-1626621331169-5f68be3f4834?q=80&w=1740&auto=format&fit=crop",
         meals: ["Breakfast", "Dinner"],
@@ -122,9 +109,9 @@ export const sampleItineraries: Itinerary[] = [
           "Double-hump camel ride at Hunder Sand Dunes",
           "Visit Diskit Monastery & 32m Maitreya Buddha statue",
         ],
-        icon: Mountain,
+        iconName: "Mountain",
         image:
-          "https://images.unsplash.com/photo-1593181629936-11c tried?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1593181629936-11c609fc71d7?q=80&w=1740&auto=format&fit=crop",
         meals: ["Breakfast", "Dinner"],
         accommodation: "Camp in Nubra Valley",
       },
@@ -140,7 +127,7 @@ export const sampleItineraries: Itinerary[] = [
           "Witness the color-changing lake waters",
           "Stargazing at night by the lake",
         ],
-        icon: Sunrise,
+        iconName: "Sunrise",
         image:
           "https://images.unsplash.com/photo-1583312708208-12e85cd1e6df?q=80&w=1740&auto=format&fit=crop",
         meals: ["Breakfast", "Dinner"],
@@ -158,7 +145,7 @@ export const sampleItineraries: Itinerary[] = [
           "Visit Hemis Monastery",
           "Explore Thiksey Monastery",
         ],
-        icon: Bus,
+        iconName: "Bus",
         image:
           "https://images.unsplash.com/photo-1600411832923-04c1bef22d14?q=80&w=1740&auto=format&fit=crop",
         meals: ["Breakfast", "Dinner"],
@@ -176,7 +163,7 @@ export const sampleItineraries: Itinerary[] = [
           "Visit Pathar Sahib Gurudwara",
           "Farewell dinner with cultural program",
         ],
-        icon: MapPin,
+        iconName: "MapPin",
         image:
           "https://images.unsplash.com/photo-1586340521535-3a5855a5b1b6?q=80&w=1740&auto=format&fit=crop",
         meals: ["Breakfast", "Dinner"],
@@ -194,7 +181,7 @@ export const sampleItineraries: Itinerary[] = [
           "Airport transfer",
           "Departure with cherished memories",
         ],
-        icon: Plane,
+        iconName: "Plane",
         image:
           "https://images.unsplash.com/photo-1551785882-5ba31ba4f583?q=80&w=1740&auto=format&fit=crop",
         meals: ["Breakfast"],

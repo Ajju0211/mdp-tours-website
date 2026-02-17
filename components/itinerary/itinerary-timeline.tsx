@@ -2,9 +2,28 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Utensils, Building2 } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import {
+  ChevronDown,
+  Utensils,
+  Building2,
+  Plane,
+  Bus,
+  Camera,
+  Mountain,
+  MapPin,
+  Sunrise,
+  type LucideIcon,
+} from "lucide-react";
 import type { ItineraryDay } from "@/data/itineraries";
+
+const iconMap: Record<string, LucideIcon> = {
+  Plane,
+  Bus,
+  Camera,
+  Mountain,
+  MapPin,
+  Sunrise,
+};
 
 interface TimelineDayCardProps {
   day: ItineraryDay;
@@ -21,7 +40,7 @@ function TimelineDayCard({
   index,
   isLast,
 }: TimelineDayCardProps) {
-  const Icon = day.icon;
+  const Icon = iconMap[day.iconName] || Plane;
 
   return (
     <motion.div
