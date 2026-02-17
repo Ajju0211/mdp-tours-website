@@ -2,21 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  // { name: "Home", href: "#" },
-  { name: "Destinations", href: "#destinations" },
-  { name: "Services", href: "#services" },
-  { name: "Itinerary", href: "/itinerary" },
-  // { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  { name: "Destinations", href: "/#destinations" },
+  { name: "Services", href: "/#services" },
+  { name: "Contact", href: "/#contact" },
 ];
 
-export function Navbar() {
+export function InnerNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -39,32 +35,38 @@ export function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <nav className="mx-auto max-w-7xl px-6 flg:px-8">
-        <div className="flex h-20 lg:h-24 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="flex h-10 w-10 lg:h-11 lg:w-11 items-center justify-center rounded-xl bg-white">
-              <Image
-                alt="logo"
-                height={400}
-                width={400}
-                className="w-full h-full object-cover"
-                src="/assets/logo.png"
-              />
-            </div>
-            <div className="flex flex-col">
+      <nav className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="flex h-20 items-center justify-between">
+          {/* Back + Logo */}
+          <div className="flex items-center gap-3">
+            <Link
+              href="/"
+              className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors ${
+                isScrolled
+                  ? "text-neutral-600 hover:bg-neutral-100"
+                  : "text-white/90 hover:bg-white/10"
+              }`}
+              aria-label="Go back to home"
+            >
+              <ArrowLeft className="h-5 w-5" />
+            </Link>
+            <Link href="/" className="flex items-center gap-3">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-white overflow-hidden">
+                <Image
+                  alt="MDP Tours logo"
+                  height={400}
+                  width={400}
+                  className="w-full h-full object-cover"
+                  src="/assets/logo.png"
+                />
+              </div>
               <span
-                className={`text-xl lg:text-2xl font-bold tracking-tight transition-colors duration-300 ${isScrolled ? "text-neutral-900" : "text-white"}`}
+                className={`text-lg font-bold tracking-tight transition-colors duration-300 hidden sm:inline ${isScrolled ? "text-neutral-900" : "text-white"}`}
               >
                 MDP TOURS
               </span>
-              <span
-                className={`text-[10px] lg:text-xs font-medium tracking-widest uppercase transition-colors duration-300 ${isScrolled ? "text-neutral-500" : "text-white/70"}`}
-              >
-                Simplifying Travel
-              </span>
-            </div>
-          </Link>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:gap-10">
@@ -81,13 +83,6 @@ export function Navbar() {
                 {link.name}
               </Link>
             ))}
-          </div>
-
-          {/* CTA Button */}
-          <div className="hidden lg:block">
-            {/* <Button className="bg-[#1a5f7a] text-white hover:bg-[#1a5f7a]/90 h-11 px-6 rounded-xl text-sm font-medium tracking-wide shadow-lg shadow-[#1a5f7a]/20">
-              Book Now
-            </Button> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -115,7 +110,7 @@ export function Navbar() {
             transition={{ duration: 0.3 }}
             className="lg:hidden bg-white border-b border-neutral-100"
           >
-            <div className="px-6 py-8 space-y-1">
+            <div className="px-6 py-6 space-y-1">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -126,11 +121,6 @@ export function Navbar() {
                   {link.name}
                 </Link>
               ))}
-              {/* <div className="pt-4">
-                <Button className="w-full bg-[#1a5f7a] text-white hover:bg-[#1a5f7a]/90 h-12 rounded-xl font-medium">
-                  Book Now
-                </Button>
-              </div> */}
             </div>
           </motion.div>
         )}
