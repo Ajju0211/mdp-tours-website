@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Utensils, Building2 } from 'lucide-react';
+import { ChevronDown, Clock, MapPin } from 'lucide-react';
 import type { ItineraryDay } from '@/data/itineraries';
 import { ImageCarousel } from './image-carousel';
 
@@ -22,85 +22,87 @@ function TimelineDayCard({
   totalDays,
 }: TimelineDayCardProps) {
   const isLast = index === totalDays - 1;
+  const dayNumber = String(day.day).padStart(2, '0');
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="relative flex gap-8 lg:gap-12"
+      viewport={{ once: true, margin: '-100px' }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      className="relative"
     >
-      {/* Timeline Track - Left Side */}
-      <div className="flex flex-col items-center">
-        {/* Day Circle */}
-        <motion.button
-          onClick={onToggle}
-          whileHover={{ scale: 1.15 }}
-          whileTap={{ scale: 0.95 }}
-          className={`relative z-10 h-16 w-16 lg:h-20 lg:w-20 shrink-0 rounded-full border-3 transition-all duration-300 flex items-center justify-center ${
-            isExpanded
-              ? 'border-[#1a5f7a] bg-[#1a5f7a] text-white shadow-lg shadow-[#1a5f7a]/30'
-              : 'border-[#1a5f7a]/30 bg-white text-[#1a5f7a] hover:border-[#1a5f7a] hover:bg-[#1a5f7a]/5'
-          }`}
-        >
-          <span className="text-lg lg:text-xl font-bold">{day.day}</span>
-        </motion.button>
+      {/* Timeline Connector */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-[#1a5f7a] to-[#57b8d7]" />
 
-        {/* Vertical Connector Line */}
-        {!isLast && (
-          <motion.div
-            initial={{ scaleY: 0 }}
-            whileInView={{ scaleY: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.1 }}
-            className="w-1 flex-1 min-h-12 bg-gradient-to-b from-[#1a5f7a]/40 to-[#1a5f7a]/10 origin-top"
-          />
-        )}
+      {/* Timeline Dot */}
+      <div className="absolute left-0 top-0 w-1 h-full flex items-start">
+        <motion.div
+          className="relative -left-3.5 mt-8 h-7 w-7 rounded-full border-3 border-white bg-[#1a5f7a] shadow-lg shadow-[#1a5f7a]/30 flex items-center justify-center"
+          whileHover={{ scale: 1.2 }}
+          transition={{ type: 'spring', stiffness: 400, damping: 10 }}
+        >
+          <span className="text-xs font-bold text-white">{dayNumber}</span>
+        </motion.div>
       </div>
 
-      {/* Content Area - Right Side */}
-      <div className={`flex-1 ${!isLast ? 'pb-12 lg:pb-16' : 'pb-0'}`}>
-        {/* Header Button */}
-        <button
+      {/* Day Card */}
+      <div className="ml-12 lg:ml-16 mb-8 lg:mb-12">
+        <motion.button
           onClick={onToggle}
           className="w-full text-left group"
-          aria-expanded={isExpanded}
+          whileHover={{ y: -4 }}
+          transition={{ type: 'spring', stiffness: 300, damping: 20 }}
         >
+          {/* Card Header */}
           <div
-            className={`rounded-xl border transition-all duration-300 ${
+            className={`relative rounded-2xl border transition-all duration-300 overflow-hidden ${
               isExpanded
-                ? 'border-[#1a5f7a]/20 bg-white shadow-xl shadow-neutral-900/8'
-                : 'border-neutral-100 bg-white hover:border-neutral-200 hover:shadow-lg'
+                ? 'border-[#1a5f7a]/30 bg-white shadow-2xl shadow-[#1a5f7a]/10'
+                : 'border-neutral-200 bg-white hover:border-[#1a5f7a]/40 hover:shadow-xl hover:shadow-[#1a5f7a]/5'
             }`}
           >
-            <div className="p-6 lg:p-7">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex-1 min-w-0">
-                  <div className="mb-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-[#1a5f7a]">
-                      Day {day.day}
-                    </span>
+            {/* Header with Background Image */}
+            <div className="relative h-40 lg:h-48 bg-gradient-to-br from-[#1a5f7a]/10 to-[#57b8d7]/10 overflow-hidden">
+              {day.image && (
+                <img
+                  src={day.image}
+                  alt={day.title}
+                  className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-300"
+                />
+              )}
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-transparent" />
+
+              {/* Content Overlay */}
+              <div className="relative h-full flex flex-col justify-between p-6 lg:p-8">
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full bg-[#1a5f7a]/10 border border-[#1a5f7a]/20">
+                      <span className="text-xs font-bold text-[#1a5f7a] uppercase tracking-wider">
+                        Day {day.day}
+                      </span>
+                    </div>
+                    <h3 className="text-xl lg:text-2xl font-bold text-neutral-900 mb-2 line-clamp-2 text-balance group-hover:text-[#1a5f7a] transition-colors">
+                      {day.title}
+                    </h3>
                   </div>
-                  <h3 className="text-lg lg:text-xl font-semibold text-neutral-900 group-hover:text-[#1a5f7a] transition-colors mb-2 line-clamp-2">
-                    {day.title}
-                  </h3>
-                  <p className="text-sm text-neutral-500 flex items-center gap-1.5">
-                    <span className="inline-block w-1 h-1 rounded-full bg-[#57b8d7]" />
-                    {day.location}
-                  </p>
+                  <motion.div
+                    animate={{ rotate: isExpanded ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="shrink-0"
+                  >
+                    <ChevronDown
+                      className={`w-6 h-6 transition-colors ${
+                        isExpanded ? 'text-[#1a5f7a]' : 'text-neutral-400'
+                      }`}
+                    />
+                  </motion.div>
                 </div>
-                <motion.div
-                  animate={{ rotate: isExpanded ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="shrink-0 mt-1"
-                >
-                  <ChevronDown
-                    className={`w-5 h-5 transition-colors ${
-                      isExpanded ? 'text-[#1a5f7a]' : 'text-neutral-400'
-                    }`}
-                  />
-                </motion.div>
+
+                <div className="flex items-center gap-2 text-sm text-neutral-600">
+                  <MapPin className="w-4 h-4 text-[#57b8d7]" />
+                  {day.location}
+                </div>
               </div>
             </div>
 
@@ -114,62 +116,94 @@ function TimelineDayCard({
                   transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }}
                   className="overflow-hidden"
                 >
-                  <div className="border-t border-neutral-100 px-6 lg:px-7 py-6 lg:py-7">
-                    {/* Image Carousel */}
+                  <div className="border-t border-neutral-100 p-6 lg:p-8 space-y-6 lg:space-y-8">
+                    {/* Image Gallery Section */}
                     {day.images && day.images.length > 0 && (
-                      <div className="mb-7 -mx-6 lg:-mx-7">
-                        <ImageCarousel images={day.images} title={day.title} />
+                      <div className="space-y-4">
+                        <h4 className="text-sm font-semibold text-neutral-900 uppercase tracking-wider">
+                          Journey Gallery
+                        </h4>
+                        <div className="rounded-xl overflow-hidden">
+                          <ImageCarousel images={day.images} title={day.title} />
+                        </div>
                       </div>
                     )}
 
                     {/* Description */}
-                    <p className="text-sm lg:text-base text-neutral-600 leading-relaxed mb-6 text-pretty">
-                      {day.description}
-                    </p>
-
-                    {/* Activities Section */}
-                    <div className="mb-7">
-                      <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-400 mb-4">
-                        Activities & Experiences
-                      </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                        {day.activities.map((activity) => (
-                          <div
-                            key={activity}
-                            className="flex items-start gap-3 p-3 rounded-lg bg-neutral-50/80 hover:bg-neutral-100 transition-colors"
-                          >
-                            <span className="mt-1.5 h-2 w-2 rounded-full bg-[#57b8d7] shrink-0" />
-                            <span className="text-sm text-neutral-700">{activity}</span>
-                          </div>
-                        ))}
+                    {day.description && (
+                      <div className="space-y-3">
+                        <p className="text-neutral-700 leading-relaxed text-pretty">
+                          {day.description}
+                        </p>
                       </div>
-                    </div>
+                    )}
+
+                    {/* Activities Grid */}
+                    {day.activities.length > 0 && (
+                      <div className="space-y-4">
+                        <h4 className="text-sm font-semibold text-neutral-900 uppercase tracking-wider">
+                          Activities & Highlights
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {day.activities.map((activity) => (
+                            <motion.div
+                              key={activity}
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              className="flex items-start gap-3 p-4 rounded-lg bg-gradient-to-br from-[#1a5f7a]/5 to-[#57b8d7]/5 border border-[#1a5f7a]/10 hover:border-[#1a5f7a]/30 transition-all"
+                            >
+                              <div className="mt-1.5 h-2.5 w-2.5 rounded-full bg-[#1a5f7a] shrink-0" />
+                              <span className="text-sm font-medium text-neutral-700">
+                                {activity}
+                              </span>
+                            </motion.div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
 
                     {/* Meals & Accommodation */}
-                    <div className="flex flex-wrap gap-3 pt-2">
-                      {day.meals.length > 0 && (
-                        <div className="flex items-center gap-2 rounded-lg border border-neutral-100 bg-neutral-50 px-4 py-2.5">
-                          <Utensils className="h-4 w-4 text-[#1a5f7a]" />
-                          <span className="text-sm font-medium text-neutral-600">
-                            {day.meals.join(', ')}
-                          </span>
+                    {(day.meals.length > 0 || day.accommodation !== 'N/A') && (
+                      <div className="space-y-4 pt-4 border-t border-neutral-100">
+                        <h4 className="text-sm font-semibold text-neutral-900 uppercase tracking-wider">
+                          Stay & Meals
+                        </h4>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {day.meals.length > 0 && (
+                            <div className="flex items-center gap-3 p-4 rounded-lg bg-neutral-50 border border-neutral-200 hover:border-[#57b8d7]/40 transition-colors">
+                              <Clock className="h-5 w-5 text-[#57b8d7]" shrink-0 />
+                              <div>
+                                <p className="text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+                                  Meals
+                                </p>
+                                <p className="text-sm font-medium text-neutral-800">
+                                  {day.meals.join(', ')}
+                                </p>
+                              </div>
+                            </div>
+                          )}
+                          {day.accommodation !== 'N/A' && (
+                            <div className="flex items-center gap-3 p-4 rounded-lg bg-neutral-50 border border-neutral-200 hover:border-[#57b8d7]/40 transition-colors">
+                              <MapPin className="h-5 w-5 text-[#57b8d7]" />
+                              <div>
+                                <p className="text-xs text-neutral-500 uppercase tracking-wider font-semibold">
+                                  Accommodation
+                                </p>
+                                <p className="text-sm font-medium text-neutral-800">
+                                  {day.accommodation}
+                                </p>
+                              </div>
+                            </div>
+                          )}
                         </div>
-                      )}
-                      {day.accommodation !== 'N/A' && (
-                        <div className="flex items-center gap-2 rounded-lg border border-neutral-100 bg-neutral-50 px-4 py-2.5">
-                          <Building2 className="h-4 w-4 text-[#1a5f7a]" />
-                          <span className="text-sm font-medium text-neutral-600">
-                            {day.accommodation}
-                          </span>
-                        </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               )}
             </AnimatePresence>
           </div>
-        </button>
+        </motion.button>
       </div>
     </motion.div>
   );
@@ -180,36 +214,39 @@ interface ItineraryTimelineProps {
 }
 
 export function ItineraryTimeline({ days }: ItineraryTimelineProps) {
-  const [expandedDay, setExpandedDay] = useState<number>(1);
+  const [expandedDay, setExpandedDay] = useState<number | null>(null);
 
   const handleToggle = (dayNum: number) => {
-    setExpandedDay(expandedDay === dayNum ? -1 : dayNum);
+    setExpandedDay(expandedDay === dayNum ? null : dayNum);
   };
 
   return (
-    <section className="py-20 lg:py-32 bg-neutral-50/30">
-      <div className="max-w-5xl mx-auto px-6 lg:px-8">
+    <section className="py-16 lg:py-24 bg-white">
+      <div className="max-w-4xl mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-16 lg:mb-20"
+          className="mb-12 lg:mb-16"
         >
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-[#1a5f7a] mb-3 block">
-            Day by Day Journey
-          </span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 tracking-tight text-balance mb-4">
-            Your Itinerary Awaits
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#1a5f7a]/10 border border-[#1a5f7a]/20 mb-4">
+            <div className="w-2 h-2 rounded-full bg-[#1a5f7a]" />
+            <span className="text-sm font-semibold text-[#1a5f7a] uppercase tracking-wider">
+              Your Journey
+            </span>
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-bold text-neutral-900 mb-4 text-balance">
+            Day-by-Day Itinerary
           </h2>
-          <p className="text-base text-neutral-600 max-w-2xl text-pretty">
-            Explore each day of your adventure with detailed activities, accommodations, and memorable experiences carefully curated for you.
+          <p className="text-lg text-neutral-600 max-w-2xl">
+            Discover each moment of your adventure with curated activities, breathtaking locations, and unforgettable experiences.
           </p>
         </motion.div>
 
-        {/* Timeline */}
-        <div className="relative">
+        {/* Timeline Container */}
+        <div className="relative pl-2">
           {days.map((day, index) => (
             <TimelineDayCard
               key={day.day}
