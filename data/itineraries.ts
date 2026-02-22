@@ -30,6 +30,14 @@ export interface Itinerary {
   bestTime: string;
   difficulty: "Easy" | "Moderate" | "Challenging";
   groupSize: string;
+  essentials?: {
+    maxAltitude?: string;
+    minFitness?: string;
+    whatToBring?: string[];
+    climate?: string;
+    visaRequired?: boolean;
+    accommodation?: string;
+  };
 }
 
 export const sampleItineraries: Itinerary[] = [
@@ -76,6 +84,23 @@ export const sampleItineraries: Itinerary[] = [
     bestTime: "Jun - Sep",
     difficulty: "Moderate",
     groupSize: "2-12",
+    essentials: {
+      maxAltitude: "5,359m (Khardung La Pass)",
+      minFitness: "Moderate - Regular walking & light hiking",
+      climate: "Cold & Dry, Nights below freezing",
+      visaRequired: false,
+      accommodation: "Mix of hotels and camps",
+      whatToBring: [
+        "Warm layers, thermal innerwear & fleece jackets",
+        "Sturdy trekking shoes with good grip",
+        "Sun protection (sunscreen, sunglasses, hat)",
+        "Light rain jacket or poncho",
+        "Altitude sickness medication (consult doctor)",
+        "High SPF sunscreen & lip balm",
+        "Reusable water bottle & energy snacks",
+        "Camera or smartphone for capturing memories",
+      ],
+    },
     days: [
       {
         day: 1,
