@@ -6,6 +6,7 @@ export interface ItineraryDay {
   activities: string[];
   iconName: string;
   image: string;
+  images?: string[]; // Array of images for carousel
   meals: string[];
   accommodation: string;
 }
@@ -91,6 +92,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "Plane",
         image:
           "https://images.unsplash.com/photo-1551785882-5ba31ba4f583?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1551785882-5ba31ba4f583?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1606933248051-5ce98adc812a?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1532274040911-5f82f25c5586?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Dinner"],
         accommodation: "Hotel in Leh",
       },
@@ -109,6 +115,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "Camera",
         image:
           "https://images.unsplash.com/photo-1626621331169-5f68be3f4834?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1626621331169-5f68be3f4834?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548013146-72c260e80e62?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1582722260149-433e5e0495ba?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast", "Dinner"],
         accommodation: "Hotel in Leh",
       },
@@ -127,6 +138,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "Mountain",
         image:
           "https://images.unsplash.com/photo-1593181629936-11c609fc71d7?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1593181629936-11c609fc71d7?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast", "Dinner"],
         accommodation: "Camp in Nubra Valley",
       },
@@ -145,6 +161,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "Sunrise",
         image:
           "https://images.unsplash.com/photo-1583312708208-12e85cd1e6df?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1583312708208-12e85cd1e6df?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast", "Dinner"],
         accommodation: "Lakeside Camp at Pangong",
       },
@@ -163,6 +184,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "Bus",
         image:
           "https://images.unsplash.com/photo-1600411832923-04c1bef22d14?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1600411832923-04c1bef22d14?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast", "Dinner"],
         accommodation: "Hotel in Leh",
       },
@@ -181,6 +207,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "MapPin",
         image:
           "https://images.unsplash.com/photo-1586340521535-3a5855a5b1b6?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1586340521535-3a5855a5b1b6?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast", "Dinner"],
         accommodation: "Hotel in Leh",
       },
@@ -199,6 +230,11 @@ export const sampleItineraries: Itinerary[] = [
         iconName: "Plane",
         image:
           "https://images.unsplash.com/photo-1551785882-5ba31ba4f583?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1551785882-5ba31ba4f583?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1548013146-72c260e80e62?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast"],
         accommodation: "N/A",
       },
@@ -254,6 +290,11 @@ export const sampleItineraries: Itinerary[] = [
         activities: ["Airport pickup", "Resort check-in", "Evening beach walk", "Welcome dinner"],
         iconName: "Plane",
         image: "https://images.unsplash.com/photo-1587922546307-776227941871?q=80&w=1938&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1587922546307-776227941871?q=80&w=1938&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1511884642898-4c92249e20b6?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Dinner"],
         accommodation: "Beachside Resort",
       },
@@ -265,6 +306,11 @@ export const sampleItineraries: Itinerary[] = [
         activities: ["Visit Fort Aguada", "Baga & Calangute Beach", "Anjuna Flea Market", "Nightlife experience"],
         iconName: "Camera",
         image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast"],
         accommodation: "Beachside Resort",
       },
@@ -276,6 +322,11 @@ export const sampleItineraries: Itinerary[] = [
         activities: ["Basilica of Bom Jesus", "Se Cathedral", "Church of St. Francis of Assisi", "Mandovi River cruise"],
         iconName: "MapPin",
         image: "https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1580894908361-967195033215?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast"],
         accommodation: "Beachside Resort",
       },
@@ -287,6 +338,11 @@ export const sampleItineraries: Itinerary[] = [
         activities: ["Palolem Beach", "Spice plantation tour", "Goan cooking demo", "Sunset at Colva Beach"],
         iconName: "Sunrise",
         image: "https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?q=80&w=1740&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1614082242765-7c98ca0f3df3?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1490022874519-1ad2ed20c5ba?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast", "Lunch"],
         accommodation: "Beachside Resort",
       },
@@ -298,6 +354,11 @@ export const sampleItineraries: Itinerary[] = [
         activities: ["Leisure breakfast", "Souvenir shopping", "Airport transfer"],
         iconName: "Plane",
         image: "https://images.unsplash.com/photo-1587922546307-776227941871?q=80&w=1938&auto=format&fit=crop",
+        images: [
+          "https://images.unsplash.com/photo-1587922546307-776227941871?q=80&w=1938&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1502481851512-e9c2529bfcd0?q=80&w=1740&auto=format&fit=crop",
+          "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?q=80&w=1740&auto=format&fit=crop",
+        ],
         meals: ["Breakfast"],
         accommodation: "N/A",
       },

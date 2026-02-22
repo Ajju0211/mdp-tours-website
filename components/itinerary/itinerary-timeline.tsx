@@ -134,6 +134,17 @@ function TimelineDayCard({
                 >
                   <div className="px-5 lg:px-6 pb-5 lg:pb-6 border-t border-neutral-100">
                     <div className="pt-5 lg:pt-6">
+                      {/* Day Image/Gallery */}
+                      {(day.image || day.images?.length) && (
+                        <div className="mb-6 rounded-xl overflow-hidden bg-neutral-100">
+                          <img
+                            src={day.image}
+                            alt={`${day.title}`}
+                            className="w-full h-48 lg:h-64 object-cover"
+                          />
+                        </div>
+                      )}
+
                       {/* Description */}
                       <p className="text-sm lg:text-base text-neutral-600 leading-relaxed mb-6">
                         {day.description}

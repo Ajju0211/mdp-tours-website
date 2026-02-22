@@ -6,6 +6,7 @@ import { ItineraryHighlights } from "@/components/itinerary/itinerary-highlights
 import { ItineraryTimeline } from "@/components/itinerary/itinerary-timeline";
 import { ItineraryInclusions } from "@/components/itinerary/itinerary-inclusions";
 import { ItineraryCTA } from "@/components/itinerary/itinerary-cta";
+import { ItineraryGallery } from "@/components/itinerary/itinerary-gallery";
 import { Footer } from "@/components/home/footer";
 
 export async function generateStaticParams() {
@@ -37,12 +38,18 @@ export default async function ItineraryDetailPage({
 
   if (!itinerary) notFound();
 
+  // Collect all images from all days
+  const allGalleryImages = itinerary.days.flatMap((day) => day.images || []);
+
   return (
     <main className="min-h-screen bg-white">
       <InnerNavbar />
       <ItineraryHero itinerary={itinerary} />
       <ItineraryHighlights highlights={itinerary.highlights} />
       <ItineraryTimeline days={itinerary.days} />
+      {allGalleryImages.length > 0 && (
+        <ItineraryGallery title={itinerary.title} allImages={allGalleryImages} />
+      )}
       <ItineraryInclusions
         included={itinerary.included}
         excluded={itinerary.excluded}
