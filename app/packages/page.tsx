@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef, useCallback, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { getPackages } from "@/api/package";
 import { PackagesHero } from "@/components/packages/packages-hero";
@@ -11,7 +11,7 @@ import type { Package } from "@/types/package-itinerary";
 
 const LIMIT = 9;
 
-export default function PackagesPage() {
+function PackagesContent() {
   const searchParams = useSearchParams();
 
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
@@ -186,5 +186,13 @@ export default function PackagesPage() {
         <div ref={sentinelRef} className="h-1" />
       </main>
     </SmoothScrollProvider>
+  );
+}
+
+export default function PackagesPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-neutral-500">Loading packages...</div>}>
+      <PackagesContent />
+    </Suspense>
   );
 }
