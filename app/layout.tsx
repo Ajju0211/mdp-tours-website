@@ -3,6 +3,8 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { Navbar } from "@/components/home/navbar";
+import { Footer } from "@/components/home/footer";
 
 const _inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -48,9 +50,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased flex flex-col item-center">
+        <Navbar />
         {children}
         <Analytics />
+        <Footer />
       </body>
     </html>
   );

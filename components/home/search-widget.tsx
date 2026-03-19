@@ -1,13 +1,11 @@
 "use client";
 
 import * as React from "react";
+import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
-import { format } from "date-fns";
-import { CalendarIcon, MapPin, Search, Users } from "lucide-react";
+import { MapPin, Search, Users } from "lucide-react";
 
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
 import { Input } from "@/components/ui/input";
 import {
   Popover,
@@ -24,73 +22,78 @@ import {
 import { Slider } from "@/components/ui/slider";
 
 export function SearchWidget() {
-  const [date, setDate] = React.useState<Date>();
-  const [budget, setBudget] = React.useState([1000, 5000]);
+  const router = useRouter();
+  const [destination, setDestination] = React.useState("");
+  const [budget, setBudget] = React.useState([1000, 100000]);
+  const [travelers, setTravelers] = React.useState([1, 50]);
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+
+    if (destination.trim()) {
+      params.set("q", destination.trim());
+    }
+
+    params.set("minPrice", String(budget[0]));
+    params.set("maxPrice", String(budget[1]));
+
+    if (travelers[0] > 1) params.set("minGroupSize", String(travelers[0]));
+    if (travelers[1] < 50) params.set("maxGroupSize", String(travelers[1]));
+
+    router.push(`/packages?${params.toString()}`);
+  };
 
   return (
-    <section className="relative z-10  px-4 sm:px-6 lg:px-8">
+    <section className="relative z-10 px-4 sm:px-6 lg:px-8">
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true }}
-        className="mx-auto max-w-5xl"
+        className="mx-auto max-w-4xl"
       >
         <div className="rounded-2xl border border-border bg-card p-6 shadow-xl shadow-black/5">
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
+          {/* Row 1: Inputs */}
+          <div className="grid gap-4 sm:grid-cols-3 mb-4">
             {/* Destination */}
-            <div className="lg:col-span-1">
-              <label className="mb-2 block text-sm font-medium text-foreground">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Destination
               </label>
               <div className="relative">
                 <MapPin className="absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
-                <Input placeholder="Where to?" className="pl-10" />
+                <Input
+                  placeholder="Where to?"
+                  className="h-11 pl-10"
+                  value={destination}
+                  onChange={(e) => setDestination(e.target.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter") handleSearch();
+                  }}
+                />
               </div>
             </div>
 
-            {/* Date Picker */}
-            <div className="lg:col-span-1">
-              <label className="mb-2 block text-sm font-medium text-foreground">
-                Travel Date
-              </label>
-              <Popover>
-                <PopoverTrigger asChild>
-                  <Button
-                    variant="outline"
-                    className={cn(
-                      "w-full justify-start text-left font-normal",
-                      !date && "text-muted-foreground",
-                    )}
-                  >
-                    <CalendarIcon className="mr-2 size-4" />
-                    {date ? format(date, "PPP") : "Select date"}
-                  </Button>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar mode="single" selected={date} onSelect={setDate} />
-                </PopoverContent>
-              </Popover>
-            </div>
-
             {/* Budget Range */}
-            <div className="lg:col-span-1">
-              <label className="mb-2 block text-sm font-medium text-foreground">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Budget Range
               </label>
               <Popover>
                 <PopoverTrigger asChild>
                   <Button
                     variant="outline"
-                    className="w-full justify-start text-left font-normal bg-transparent"
+                    className="h-11 w-full justify-start text-left font-normal bg-transparent"
                   >
-                    &#8377;{budget[0]} - &#8377;{budget[1]}
+                    &#8377;{budget[0].toLocaleString("en-IN")} – &#8377;
+                    {budget[1].toLocaleString("en-IN")}
                   </Button>
                 </PopoverTrigger>
                 <PopoverContent className="w-64" align="start">
                   <div className="space-y-4">
                     <p className="text-sm font-medium">
-                      Budget: ${budget[0]} - ${budget[1]}
+                      Budget: ₹{budget[0].toLocaleString("en-IN")} – ₹
+                      {budget[1].toLocaleString("en-IN")}
                     </p>
                     <Slider
                       value={budget}
@@ -105,33 +108,50 @@ export function SearchWidget() {
             </div>
 
             {/* Travelers */}
-            <div className="lg:col-span-1">
-              <label className="mb-2 block text-sm font-medium text-foreground">
+            <div className="flex flex-col gap-1.5">
+              <label className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                 Travelers
               </label>
-              <Select defaultValue="2">
-                <SelectTrigger className="w-full">
-                  <Users className="mr-2 size-4 text-muted-foreground" />
-                  <SelectValue placeholder="Travelers" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="1">1 Traveler</SelectItem>
-                  <SelectItem value="2">2 Travelers</SelectItem>
-                  <SelectItem value="3">3 Travelers</SelectItem>
-                  <SelectItem value="4">4 Travelers</SelectItem>
-                  <SelectItem value="5">5+ Travelers</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            {/* Search Button */}
-            <div className="flex items-end lg:col-span-1">
-              <Button className="w-full gap-2" size="lg">
-                <Search className="size-4" />
-                Search
-              </Button>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className="h-11 w-full justify-start text-left font-normal bg-transparent"
+                  >
+                    <Users className="mr-3 size-4 text-muted-foreground" />
+                    {travelers[0]} – {travelers[1]} people
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-64" align="start">
+                  <div className="space-y-4">
+                    <p className="text-sm font-medium">
+                      Group Size Range
+                    </p>
+                    <Slider
+                      value={travelers}
+                      onValueChange={setTravelers}
+                      min={1}
+                      max={50}
+                      step={1}
+                    />
+                    <p className="text-xs text-muted-foreground">
+                      {travelers[0]} – {travelers[1]} people
+                    </p>
+                  </div>
+                </PopoverContent>
+              </Popover>
             </div>
           </div>
+
+          {/* Row 2: Search Button — full width */}
+          <Button
+            className="w-full gap-2 h-11"
+            size="lg"
+            onClick={handleSearch}
+          >
+            <Search className="size-4" />
+            Search Packages
+          </Button>
         </div>
       </motion.div>
     </section>

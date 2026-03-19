@@ -8,11 +8,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 const navLinks = [
-  // { name: "Home", href: "#" },
-  { name: "Destinations", href: "#destinations" },
-  { name: "Services", href: "#services" },
-  // { name: "About", href: "#about" },
-  { name: "Contact", href: "#contact" },
+  // { name: "Home", href: "/" },
+  { name: "Destinations", href: "/#destinations" },
+  { name: "Services", href: "/#services" },
+  // { name: "About", href: "/#about" },
+  { name: "Contact", href: "/#contact" },
 ];
 
 export function Navbar() {

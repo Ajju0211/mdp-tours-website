@@ -13,7 +13,8 @@ export function Hero() {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105">
           <Image
-            src="/assets/hero_section.avif"
+            // src="/assets/hero_section.avif"
+            src="background/backgrond-image.png"
             alt="Hero Section"
             height={500}
             width={500}
@@ -61,7 +62,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.6 }}
         >
-          {/* <SearchWidget /> */}
+          <SearchWidget />
         </motion.div>
 
         {/* Stats */}
