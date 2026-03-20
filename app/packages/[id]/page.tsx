@@ -5,6 +5,7 @@ import { ItineraryHighlights } from "@/components/itinerary/itinerary-highlights
 import { ItineraryTimeline } from "@/components/itinerary/itinerary-timeline";
 import { ItineraryGallery } from "@/components/itinerary/itinerary-gallery";
 import { ItineraryInclusions } from "@/components/itinerary/itinerary-inclusions";
+import { QueryForm } from "@/components/home/query-form";
 
 export async function generateMetadata({
   params,
@@ -119,10 +120,8 @@ export default async function ItineraryDetailPage({
         />
       )}
 
-      {/* <ItineraryCTA
-        price={mappedItinerary.price}
-        duration={mappedItinerary.duration}
-      /> */}
+      {/* Submit linked queries */}
+      <QueryForm packageId={pkg._id} packageTitle={pkg.title} />
     </main>
   );
 }

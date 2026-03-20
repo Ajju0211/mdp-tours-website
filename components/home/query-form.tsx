@@ -34,8 +34,11 @@ const initialFormData: FormData = {
   message: "",
 };
 
-export function QueryForm() {
-  const [formData, setFormData] = useState<FormData>(initialFormData);
+export function QueryForm({ packageId, packageTitle }: { packageId?: string; packageTitle?: string } = {}) {
+  const [formData, setFormData] = useState<FormData>({
+    ...initialFormData,
+    service: packageTitle || "",
+  });
   const [status, setStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -87,6 +90,7 @@ export function QueryForm() {
       phone: formData.phone.trim() || undefined,
       service: formData.service || undefined,
       message: formData.message.trim() || undefined,
+      packageId: packageId || undefined,
     };
 
     console.log("Submitting query:", payload);
@@ -95,7 +99,10 @@ export function QueryForm() {
       const res = await createQueryStatus(payload);
       console.log("Query submitted successfully:", res);
       setStatus("success");
-      setFormData(initialFormData);
+      setFormData({
+        ...initialFormData,
+        service: packageTitle || "",
+      });
 
       // Reset back to form after 5 seconds
       setTimeout(() => setStatus("idle"), 5000);
@@ -200,7 +207,7 @@ export function QueryForm() {
                   <div className="grid gap-5 sm:grid-cols-2">
                     <Field label="Full Name">
                       <Input
-                        placeholder="Ajay Singh"
+                        placeholder="John Doe"
                         required
                         value={formData.fullName}
                         onChange={(e) =>
@@ -213,7 +220,7 @@ export function QueryForm() {
                     <Field label="Email Address">
                       <Input
                         type="email"
-                        placeholder="ajay@example.com"
+                        placeholder="john@example.com"
                         required
                         value={formData.email}
                         onChange={(e) => handleChange("email", e.target.value)}
@@ -239,24 +246,34 @@ export function QueryForm() {
                       />
                     </Field>
 
-                    <Field label="Service Interested In">
-                      <Select
-                        value={formData.service}
-                        onValueChange={(val) => handleChange("service", val)}
-                        disabled={isLoading}
-                      >
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select service" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {serviceName.map((s) => (
-                            <SelectItem key={s} value={s}>
-                              {s}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </Field>
+                    {packageTitle ? (
+                      <Field label="Tour Package Interested In">
+                        <Input
+                          value={packageTitle}
+                          readOnly
+                          className="bg-neutral-100 text-neutral-600 font-medium"
+                        />
+                      </Field>
+                    ) : (
+                      <Field label="Service Interested In">
+                        <Select
+                          value={formData.service}
+                          onValueChange={(val) => handleChange("service", val)}
+                          disabled={isLoading}
+                        >
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select service" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {serviceName.map((s) => (
+                              <SelectItem key={s} value={s}>
+                                {s}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </Field>
+                    )}
                   </div>
 
                   <Field label="Message">
